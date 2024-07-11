@@ -286,7 +286,7 @@ class DbUtilities:
         if column_name not in self.get_all_columns_in_table(schema_name, table_name):
             return False
 
-        alter_sql = SQL = "ALTER TABLE " + escape_id(schema_name) + "." + escape_id(table_name) + " ADD PRIMARY KEY (" + escape_id(column_name) + ");"
+        alter_sql = "ALTER TABLE " + escape_id(schema_name) + "." + escape_id(table_name) + " ADD PRIMARY KEY (" + escape_id(column_name) + ");"
         self.execute_modify(alter_sql)
 
     def get_table_data(self, schema_name, table_name, where_clause=None, sort_column=None, sort_ascending=True, limit=None, offset=None, as_dataframe=False):

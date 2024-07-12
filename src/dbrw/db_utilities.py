@@ -271,7 +271,7 @@ class DbUtilities:
         if column_name not in self.get_all_columns_in_table(schema_name, table_name):
             return False
 
-        index_name = escape_id(column_name + "_idx")
+        index_name = escape_id(table_name + "_" + column_name + "_idx")
         create_sql = "CREATE INDEX " + index_name + " ON " + escape_id(schema_name) + "." + escape_id(table_name) + " (" + escape_id(column_name) + ");"
         self.execute_modify(create_sql)
 

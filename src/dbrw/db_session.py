@@ -52,7 +52,6 @@ class DbSession:
         try:
             yield db_reader
         finally:
-            db_reader.close()
             self.db_pool.putconn(db_conn)
 
     def get_db_writer(self, schema):

@@ -2,6 +2,8 @@ import logging
 
 from dbrw import DbUtilities
 
+logger = logging.getLogger(__name__)
+
 CACHE_MAX_ROWS = 10000
 """int: maximum number of rows allowed in the cache"""
 

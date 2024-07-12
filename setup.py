@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="dbrw",
-    version="0.1.6",
+    version="0.1.9",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     install_requires=[

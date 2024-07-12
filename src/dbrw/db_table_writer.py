@@ -7,6 +7,7 @@ from dbrw import DbUtilities, create_connection
 #from preparing_cursor import PreparingCursor
 
 logger = logging.getLogger(__name__)
+
 QUERY_SUFFIX = ":s"
 
 class DbWriter:

@@ -1,0 +1,15 @@
+name: CI - Build
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  workflow_dispatch:
+  
+jobs:
+  build:
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10' 
+    - run: python setup.py sdist

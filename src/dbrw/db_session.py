@@ -46,17 +46,26 @@ class DbSession:
         ))
         logger.info("db pool size: {0}".format(str(self.db_poolsize)))
 
-    def get_db_reader(self, schema, table, where, sort_col, sort_dir):
+    def get_db_reader(self, schema, table, where, sort_col, sort_asc=True):
         db_conn = self.db_pool.getconn()
-        db_reader = DbReader(DbUtilities(self.dsn, db_conn), schema, table, where, sort_col, sort_dir)
+        db_reader = DbReader(
+            db=DbUtilities(self.dsn, db_conn), 
+            schema_name=schema, 
+            table_name=table, 
+            where_clause=where, 
+            sort_column=sort_col, 
+            sort_ascending=sort_asc)
         try:
             yield db_reader
         finally:
             self.db_pool.putconn(db_conn)
 
-    def get_db_writer(self, schema):
+    def get_db_writer(self, schema, auto_create_tables=False):
         db_conn = self.db_pool.getconn()
-        db_writer = DbWriter(DbUtilities(self.dsn, db_conn), schema, auto_create_tables=False)
+        db_writer = DbWriter(
+            db=DbUtilities(self.dsn, db_conn), 
+            schema_name=schema, 
+            auto_create_tables=auto_create_tables)
         try:
             yield db_writer
         finally:

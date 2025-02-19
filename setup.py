@@ -2,13 +2,17 @@ from setuptools import setup, find_packages
 
 setup(
     name="dbrw",
-    version="0.1.12",
+    version="0.1.13",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     install_requires=[
-        "psycopg2",
+        # "psycopg2",
         "pandas"
     ],
+    extras_require={
+        "psycopg2": ["psycopg2"],
+        "psycopg2-binary": ["psycopg2-binary"]
+    },
     python_requires='>=3.6',
     author="Struan Clark",
     author_email="dbrw@to.scrk.net",

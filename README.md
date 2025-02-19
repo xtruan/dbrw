@@ -5,7 +5,13 @@ Postgres DataBase Reader and Writer utilities.
 ## Installation
 
 ```bash
-pip install dbrw
+pip install dbrw[psycopg2]
+```
+
+or
+
+```bash
+pip install dbrw[psycopg2-binary]
 ```
 
 ## Basic Usage
